@@ -1,0 +1,155 @@
+{
+  "AiModels": {
+    "costEffective": "性价比最高，速度快",
+    "llm": "智谱 AI 大模型",
+    "llm2": "专为编程任务优化的强大模型",
+    "llm3": "Qwen 3 系列最大模型",
+    "llm4": "适合编程任务的强大模型",
+    "llm5": "美团大模型"
+  },
+  "ErrorBoundaryErrorFallbackPage": {
+    "backToHome": "返回首页",
+    "copied": "已复制",
+    "copyErrorInfo": "复制错误信息",
+    "errorDetails": "错误详情",
+    "ifProblemPersists": "如果问题持续存在，请联系技术支持",
+    "pageEncountered": "页面遇到了一些意外情况。",
+    "reload": "重新加载",
+    "somethingWentWrong": "哎呀，出了点问题"
+  },
+  "FileExplorer": {
+    "copyToClipboard": "复制到剪贴板",
+    "select": "选择文件来查看内容"
+  },
+  "FragmentWeb": {
+    "copyLink": "复制链接",
+    "copyLinkFailed": "复制链接失败，请重试",
+    "linkCopied": "链接已复制到剪贴板",
+    "openInNewTab": "在新的标签页打开",
+    "refresh": "刷新"
+  },
+  "Functions": {
+    "error": "出现了一些错误，请再试一次。"
+  },
+  "HomeConstants": {
+    "particleLogin_title": "行业数据报告",
+    "particleLogin_prompt": "做一份《2026 年中国短视频行业数据报告》PPT，8 页，包含市场规模、平台竞争格局、用户画像与趋势预测，要有数据感和图表，专业商务风。",
+    "fireworks_title": "产品介绍",
+    "fireworks_prompt": "做一份产品介绍 PPT，6 页，包含产品定位、核心功能亮点、使用场景、与同类对比、定价方案，现代简洁风。",
+    "timeline_title": "读书笔记",
+    "timeline_prompt": "做一份读书笔记分享 PPT，6 页，提炼这本书的核心观点、金句、对我的启发和行动清单，温暖书卷风。",
+    "imageFilter_title": "知识科普",
+    "imageFilter_prompt": "做一份知识科普 PPT，用大白话讲清楚一个概念，6 页，逐层拆解、配比喻和图解，清晰易懂。",
+    "particleAvatar_title": "路演融资",
+    "particleAvatar_prompt": "做一份路演 PPT，10 页，包含问题、解决方案、市场空间、商业模式、团队和计划，机构感强、数字说服力强。",
+    "glassDashboard_title": "工作复盘",
+    "glassDashboard_prompt": "做一份项目复盘 PPT，6 页，包含目标回顾、关键数据、做得好的、待改进的和下一步计划，清晰汇报风。",
+    "glassCard_title": "课程培训",
+    "glassCard_prompt": "做一份培训课件 PPT，8 页，包含学习目标、知识讲解、案例、要点小结和自测题，教学结构清晰。",
+    "kanban_title": "知识图谱",
+    "kanban_prompt": "做一份知识体系梳理 PPT，6 页，把一个领域的核心概念、关系和脉络用图解方式呈现，结构清晰。",
+    "placeholder_blog": "做一份短视频行业数据报告...",
+    "placeholder_todo": "做一份产品介绍 PPT...",
+    "placeholder_ecommerce": "做一份读书笔记分享...",
+    "placeholder_portfolio": "做一份路演融资 PPT...",
+    "placeholder_chat": "做一份团队周报复盘...",
+    "placeholder_weather": "做一份新人培训课件..."
+  },
+  "HomePage": {
+    "create": "一句话，生成好看的 PPT",
+    "create2": "描述你的主题，SDesign 用 AI 生成可直接演示、可导出的中文幻灯片"
+  },
+  "Init": {
+    "userNotLoggedIn": "用户未登录"
+  },
+  "MessageCardCCpnsFragmentCard": {
+    "preview": "预览"
+  },
+  "MessageForm": {
+    "placeholder": "继续描述，让 SDesign 帮你调整这份 PPT...",
+    "send": "发送"
+  },
+  "MessageLoading": {
+    "adding": "添加最后的润色中...",
+    "almostDone": "即将完成...",
+    "analyzing": "正在分析您的请求...",
+    "building": "正在生成您的 PPT...",
+    "generating": "生成中...",
+    "loading": "加载中...",
+    "making": "制作组件中...",
+    "optimizing": "优化布局中...",
+    "thinking": "思考中..."
+  },
+  "ProcessingStatus": {
+    "viewOutput": "查看输出",
+    "viewThoughtProcess": "查看思考过程",
+    "analyzingRequest": "正在分析请求...",
+    "executingCommand": "执行命令",
+    "updatingFiles": "更新文件",
+    "readingFiles": "读取文件",
+    "generatingProjectName": "生成项目名称...",
+    "thinking": "思考中...",
+    "done": "完成",
+    "generatingFragmentTitle": "生成片段标题...",
+    "generatingFinalResponse": "生成最终响应...",
+    "generatingSandboxUrl": "生成沙盒 URL...",
+    "savingResult": "保存结果...",
+    "failed": "失败"
+  },
+  "Navbar": {
+    "signIn": "登录",
+    "signUp": "注册",
+    "zhCN": "简体中文"
+  },
+  "PricingPage": {
+    "pricingTitle": "订阅价格",
+    "subscription": "选择适合你的订阅"
+  },
+  "ProjectForm": {
+    "placeholder": "描述你想做的 PPT，{displayText}",
+    "send": "发送"
+  },
+  "ProjectHeader": {
+    "appearance": "外观",
+    "rename": "重命名",
+    "renameSuccess": "重命名成功",
+    "renameError": "重命名失败",
+    "backToHome": "回到首页",
+    "dark": "深色",
+    "light": "浅色",
+    "system": "跟随系统"
+  },
+  "ProjectList": {
+    "noWorks": "暂无作品",
+    "worksOf": "{name}的作品",
+    "me": "我",
+    "showMore": "查看更多",
+    "showLess": "收起",
+    "deleteTitle": "删除项目",
+    "deleteDescription": "确定要删除这个项目吗？此操作无法撤销。",
+    "delete": "删除",
+    "cancel": "取消",
+    "deleting": "删除中",
+    "rename": "重命名",
+    "moreOptions": "更多选项",
+    "renameTitle": "重命名项目",
+    "renameDescription": "请输入新的项目名称。",
+    "save": "保存",
+    "saving": "保存中...",
+    "renameSuccess": "重命名成功",
+    "renameError": "重命名失败"
+  },
+  "ProjectsViewsProjectView": {
+    "code": "代码",
+    "preview": "预览",
+    "upgrade": "升级"
+  },
+  "Usage": {
+    "free": "免费",
+    "remaining": "剩余 {points} 次{suffix}额度",
+    "resetAfter": "{resetTime}后重置",
+    "unknownTime": "未知时间",
+    "upgrade": "升级",
+    "userNotLoggedIn": "用户未登录"
+  }
+}

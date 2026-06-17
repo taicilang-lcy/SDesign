@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SDesign — 落地页视觉稿</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#16181d; --ink-soft:#565b66; --blue:#4a86d4; --blue-d:#2f63a8; --line:rgba(22,24,29,.10); }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Noto Sans SC',system-ui,-apple-system,'PingFang SC',sans-serif;color:var(--ink);
+    overflow-x:hidden;-webkit-font-smoothing:antialiased;
+    background:linear-gradient(135deg,#f7f8fb 0%,#f4f1f5 55%,#f6f4f0 100%);}
+
+  .bg{position:fixed;inset:0;z-index:-10;overflow:hidden}
+  #orbs{position:absolute;inset:0;opacity:.85;pointer-events:none}
+  @keyframes blob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-24px) scale(1.08)}66%{transform:translate(-22px,18px) scale(.95)}}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(var(--r))}50%{transform:translateY(-26px) rotate(var(--r))}}
+  .softblob{position:absolute;border-radius:50%;filter:blur(64px);animation:blob 16s ease-in-out infinite}
+  .sb1{width:340px;height:340px;background:rgba(174,198,239,.45);top:4%;left:4%}
+  .sb2{width:300px;height:300px;background:rgba(203,191,233,.42);top:30%;right:8%;animation-delay:-5s}
+  .sb3{width:300px;height:300px;background:rgba(233,200,212,.38);top:62%;left:24%;animation-delay:-9s}
+  .glass{position:absolute;border:1px solid rgba(255,255,255,.6);backdrop-filter:blur(10px);
+    box-shadow:0 24px 60px -28px rgba(30,40,70,.30);animation:float 9s ease-in-out infinite}
+  .gp1{width:220px;height:220px;border-radius:32px;top:12%;right:12%;--r:12deg;background:linear-gradient(135deg,rgba(140,170,228,.40),rgba(180,160,225,.32))}
+  .gp2{width:160px;height:160px;border-radius:28px;top:46%;left:7%;--r:-12deg;animation-delay:-3s;background:linear-gradient(135deg,rgba(170,150,222,.38),rgba(150,180,230,.30))}
+
+  /* 固定导航 */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+    padding:16px 40px;background:rgba(247,248,251,.72);backdrop-filter:blur(10px);border-bottom:1px solid rgba(22,24,29,.05)}
+  .logo{display:flex;align-items:center;gap:10px}
+  .logo img{height:36px;width:auto;display:block}
+  .word{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:.2px}
+  .navlinks{display:flex;align-items:center;gap:18px;font-size:14px;color:var(--ink-soft)}
+  .navlinks a{color:var(--ink-soft);text-decoration:none}
+  .btn-signup{background:var(--ink);color:#fff;padding:8px 18px;border-radius:9px;font-weight:500;font-size:14px}
+
+  /* 首屏 */
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 24px 40px}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--blue-d);
+    background:rgba(74,134,212,.10);border:1px solid rgba(74,134,212,.22);padding:6px 14px;border-radius:999px;margin-bottom:24px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--blue)}
+  h1{font-size:50px;line-height:1.18;font-weight:700;letter-spacing:-.5px}
+  h1 .hl{color:var(--blue-d)}
+  .sub{margin-top:18px;font-size:17px;color:var(--ink-soft);line-height:1.7;max-width:560px}
+  .composer{margin-top:30px;width:100%;max-width:680px;background:rgba(255,255,255,.88);backdrop-filter:blur(8px);
+    border:1px solid var(--line);border-radius:18px;box-shadow:0 22px 60px -24px rgba(30,40,70,.30);padding:18px 18px 14px;text-align:left}
+  .composer .ph{font-size:16px;color:#9aa0ab;min-height:46px}
+  .composer .bar{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+  .model{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-soft);background:#eef2f7;border:1px solid var(--line);padding:6px 12px;border-radius:9px}
+  .send{width:40px;height:40px;border-radius:11px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-size:19px;box-shadow:0 6px 16px rgba(74,134,212,.42)}
+  .quick{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:760px}
+  .quick a{font-size:14px;color:var(--ink);background:rgba(255,255,255,.75);border:1px solid var(--line);padding:8px 14px;border-radius:999px;text-decoration:none;backdrop-filter:blur(4px)}
+  .scrolltip{margin-top:34px;font-size:13px;color:#9aa0ab;display:flex;flex-direction:column;align-items:center;gap:4px}
+
+  /* 模板画廊 */
+  .gallery{max-width:1140px;margin:0 auto;padding:30px 32px 90px}
+  .gal-head{text-align:center;margin-bottom:8px}
+  .gal-head h2{font-size:30px;font-weight:700;letter-spacing:-.3px}
+  .gal-head p{margin-top:8px;font-size:15px;color:var(--ink-soft)}
+  .cat{margin-top:40px}
+  .cat-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(22,24,29,.08)}
+  .cat-ico{font-size:20px}
+  .cat-name{font-size:19px;font-weight:700}
+  .cat-tip{font-size:13px;color:#9aa0ab}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tpl{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;
+    box-shadow:0 14px 34px -22px rgba(30,40,70,.30);transition:transform .18s cubic-bezier(.23,1,.32,1),box-shadow .18s}
+  .tpl:hover{transform:translateY(-4px);box-shadow:0 24px 50px -22px rgba(30,40,70,.40);border-color:rgba(74,134,212,.4)}
+  .tpl .thumb{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--line);background:#f3f4f7}
+  .tpl .meta{display:flex;align-items:center;justify-content:space-between;padding:11px 14px}
+  .tpl .tname{font-size:14px;font-weight:500}
+  .tpl .use{font-size:12px;color:var(--blue-d);background:rgba(74,134,212,.10);padding:4px 10px;border-radius:7px}
+  .galfoot{text-align:center;margin-top:50px;font-size:13px;color:#9aa0ab}
+  .galfoot b{color:var(--blue-d);font-weight:500}
+</style>
+</head>
+<body>
+  <div class="bg">
+    <canvas id="orbs"></canvas>
+    <div class="softblob sb1"></div><div class="softblob sb2"></div><div class="softblob sb3"></div>
+    <div class="glass gp1"></div><div class="glass gp2"></div>
+  </div>
+
+  <div class="nav">
+    <div class="logo"><img src="logo/sdesign-s.png" alt="S"><div class="word">Design</div></div>
+    <div class="navlinks"><a href="#gallery">模板</a><span class="btn-signup">免费试用</span></div>
+  </div>
+
+  <section class="hero">
+    <span class="eyebrow"><span class="dot"></span>AI 幻灯片工厂 · 中文排版优先</span>
+    <h1>一句话，生成<span class="hl">好看的 PPT</span></h1>
+    <p class="sub">描述你的主题，SDesign 用 AI 生成可直接演示、可导出的中文幻灯片。<br>前 3 次免费，无需设计基础。</p>
+    <div class="composer">
+      <div class="ph">例如：帮我做一份《独立开发者如何用 AI 做内容》的分享 PPT，6 页，现代风…</div>
+      <div class="bar"><span class="model"><span class="dot"></span>MiMo V2.5 Pro</span><div class="send">↑</div></div>
+    </div>
+    <div class="quick">
+      <a href="#c1">📊 行业数据报告</a><a href="#c2">📖 读书笔记</a><a href="#c3">💡 产品介绍</a><a href="#c4">🎓 知识科普</a><a href="#c5">🚀 路演融资</a><a href="#c6">🔁 工作复盘</a><a href="#c7">🧑‍🏫 课程培训</a>
+    </div>
+    <div class="scrolltip"><span>↓ 或从下面挑个模板开始</span></div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="gal-head">
+      <h2>挑一个模板，一键生成</h2>
+      <p>按用途选 — 选好版式，写上你的主题就出片，不用懂设计</p>
+    </div>
+
+    <div class="cat" id="c1">
+      <div class="cat-head"><span class="cat-ico">📊</span><span class="cat-name">行业数据报告</span><span class="cat-tip">数据 · 图表 · 权威</span></div>
+      <div class="grid">
+        <div class="tpl"><img class="thumb" src="thumbs/zhangzara-monochrome.png"><div class="meta"><span class="tname">极简黑白报告</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/zhangzara-vellum.png"><div class="meta"><span class="tname">深蓝学术</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/zhangzara-cobalt-grid.png"><div class="meta"><span class="tname">钴蓝格纸</span><span class="use">使用</span></div></div>
+      </div>
+    </div>
+
+    <div class="cat" id="c2">
+      <div class="cat-head"><span class="cat-ico">📖</span><span class="cat-name">读书笔记</span><span class="cat-tip">书卷 · 衬线 · 内容向</span></div>
+      <div class="grid">
+        <div class="tpl"><img class="thumb" src="thumbs/taste-editorial.png"><div class="meta"><span class="tname">暖纸杂志风</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/zhangzara-soft-editorial.png"><div class="meta"><span class="tname">文学衬线</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/zhangzara-pin-and-paper.png"><div class="meta"><span class="tname">手账图钉</span><span class="use">使用</span></div></div>
+      </div>
+    </div>
+
+    <div class="cat" id="c3">
+      <div class="cat-head"><span class="cat-ico">💡</span><span class="cat-name">产品介绍</span><span class="cat-tip">功能 · 卖点 · 说服力</span></div>
+      <div class="grid">
+        <div class="tpl"><img class="thumb" src="thumbs/product-launch.png"><div class="meta"><span class="tname">产品发布</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/zhangzara-blue-professional.png"><div class="meta"><span class="tname">钴蓝商务</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/zhangzara-neo-grid-bold.png"><div class="meta"><span class="tname">大字爆点</span><span class="use">使用</span></div></div>
+      </div>
+    </div>
+
+    <div class="cat" id="c4">
+      <div class="cat-head"><span class="cat-ico">🎓</span><span class="cat-name">知识科普</span><span class="cat-tip">图解 · 清晰 · 教学向</span></div>
+      <div class="grid">
+        <div class="tpl"><img class="thumb" src="thumbs/graphify-dark-graph.png"><div class="meta"><span class="tname">知识图谱（暗）</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/knowledge-arch-blueprint.png"><div class="meta"><span class="tname">架构蓝图</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/dir-key-nav-minimal.png"><div class="meta"><span class="tname">每页一概念</span><span class="use">使用</span></div></div>
+      </div>
+    </div>
+
+    <div class="cat" id="c5">
+      <div class="cat-head"><span class="cat-ico">🚀</span><span class="cat-name">路演融资</span><span class="cat-tip">投资人 · 数字 · 机构感</span></div>
+      <div class="grid">
+        <div class="tpl"><img class="thumb" src="thumbs/pitch-deck.png"><div class="meta"><span class="tname">投资人路演</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/zhangzara-signal.png"><div class="meta"><span class="tname">深蓝金机构</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/zhangzara-cartesian.png"><div class="meta"><span class="tname">古典叙事</span><span class="use">使用</span></div></div>
+      </div>
+    </div>
+
+    <div class="cat" id="c6">
+      <div class="cat-head"><span class="cat-ico">🔁</span><span class="cat-name">工作 / 项目复盘</span><span class="cat-tip">周报 · 总结 · 汇报</span></div>
+      <div class="grid">
+        <div class="tpl"><img class="thumb" src="thumbs/weekly-report.png"><div class="meta"><span class="tname">周报 / 复盘</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/testing-safety-alert.png"><div class="meta"><span class="tname">事故复盘（暗）</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/zhangzara-mat.png"><div class="meta"><span class="tname">哑光商务</span><span class="use">使用</span></div></div>
+      </div>
+    </div>
+
+    <div class="cat" id="c7">
+      <div class="cat-head"><span class="cat-ico">🧑‍🏫</span><span class="cat-name">课程培训 / 教学课件</span><span class="cat-tip">课件 · 培训 · 自测</span></div>
+      <div class="grid">
+        <div class="tpl"><img class="thumb" src="thumbs/course-module.png"><div class="meta"><span class="tname">教学模块</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/tech-sharing.png"><div class="meta"><span class="tname">技术分享</span><span class="use">使用</span></div></div>
+        <div class="tpl"><img class="thumb" src="thumbs/obsidian-claude-gradient.png"><div class="meta"><span class="tname">开发教程</span><span class="use">使用</span></div></div>
+      </div>
+    </div>
+
+    <p class="galfoot"><b>更多精选模板持续接入中</b></p>
+  </section>
+
+  <script>
+    const cv = document.getElementById('orbs'), ctx = cv.getContext('2d');
+    const HUES = [215, 252, 285, 338, 32];
+    let orbs = [];
+    function resize(){ cv.width = innerWidth; cv.height = innerHeight; }
+    class Orb{
+      constructor(h){ this.x=Math.random()*cv.width; this.y=Math.random()*cv.height; this.r=Math.random()*240+200; this.vx=(Math.random()-.5)*.45; this.vy=(Math.random()-.5)*.45; this.h=h; }
+      step(){ this.x+=this.vx; this.y+=this.vy;
+        if(this.x<-this.r)this.x=cv.width+this.r; if(this.x>cv.width+this.r)this.x=-this.r;
+        if(this.y<-this.r)this.y=cv.height+this.r; if(this.y>cv.height+this.r)this.y=-this.r;
+        const g=ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.r);
+        g.addColorStop(0,`hsla(${this.h},68%,62%,.16)`); g.addColorStop(.5,`hsla(${this.h},60%,52%,.06)`); g.addColorStop(1,`hsla(${this.h},50%,45%,0)`);
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2); ctx.fill(); }
+    }
+    function init(){ resize(); orbs = HUES.map(h=>new Orb(h)); }
+    function loop(){ ctx.clearRect(0,0,cv.width,cv.height); orbs.forEach(o=>o.step()); requestAnimationFrame(loop); }
+    addEventListener('resize', resize); init(); loop();
+  </script>
+</body>
+</html>
