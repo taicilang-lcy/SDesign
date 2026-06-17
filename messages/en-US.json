@@ -32,28 +32,28 @@
     "error": "Something went wrong, please try again."
   },
   "HomeConstants": {
-    "particleLogin_title": "Particle Animation Login",
-    "particleLogin_prompt": "Create a login page with particle animation background. Particles interact with mouse movements. Include floating card, gradient text, subtle hover animations, and smooth form validation/success effects.",
-    "fireworks_title": "Build a Fireworks Generator",
-    "fireworks_prompt": "Use Canvas to build a full-screen fireworks particle generator supporting various colors, shapes, and explosion modes. Include auto-play and mouse-triggered effects with starry background and gradient transitions. Smooth particle animation with full lifecycle effects.",
-    "timeline_title": "Interactive Timeline",
-    "timeline_prompt": "Build a vertical interactive timeline component with content cards, image display, and progress indicators. Add scroll-triggered animation, expandable details, and smooth navigation.",
-    "imageFilter_title": "Image Filter Studio",
-    "imageFilter_prompt": "Create a real-time image filter application supporting multiple filters, parameter adjustments, and before/after comparison. Includes drag-and-drop upload, download saving, and filter combinations. Modern UI for image preview.",
-    "particleAvatar_title": "Build a Particle Avatar Generator",
-    "particleAvatar_prompt": "Create a particle-based avatar generator: after uploading an image, convert the avatar into dynamic particles that follow the cursor, disperse/aggregate, and gently drift. Implemented with Canvas for a clean and visually striking page.",
-    "glassDashboard_title": "Build a Glassmorphic Dashboard",
-    "glassDashboard_prompt": "Build a full-screen glassmorphic dashboard with frosted glass cards, gradient background, statistic modules, and chart placeholders. Maintain consistent corner radius, shadows, and transparency for a modern, high-quality glass UI.",
-    "glassCard_title": "Build 3D Floating Glass Cards",
-    "glassCard_prompt": "Create a set of glassmorphic cards with 3D tilt effects. The cards slightly rotate based on mouse movement with translucent textures, soft shadows, and highlights. When idle, the cards float subtly (up-down or slight rotation). Clean layout, strong sense of space, smooth animation.",
-    "kanban_title": "Build a Task Kanban",
-    "kanban_prompt": "Use react-beautiful-dnd to build a draggable Kanban board with tasks that can be added or removed using local state. Consistent spacing, column width, and hover effects for a polished UI.",
-    "placeholder_blog": "Create a blog website...",
-    "placeholder_todo": "Create a todo application...",
-    "placeholder_ecommerce": "Create an e-commerce platform...",
-    "placeholder_portfolio": "Create a personal portfolio...",
-    "placeholder_chat": "Create a chat application...",
-    "placeholder_weather": "Create a weather forecast app..."
+    "particleLogin_title": "Industry Data Report",
+    "particleLogin_prompt": "Make an 8-page deck \"2026 China Short-Video Industry Data Report\" covering market size, platform competition, user personas, and trend forecasts. Data-rich with charts, professional business style.",
+    "fireworks_title": "Product Intro",
+    "fireworks_prompt": "Make a 6-page product intro deck covering positioning, key features, use cases, comparison with alternatives, and pricing. Modern, clean style.",
+    "timeline_title": "Book Notes",
+    "timeline_prompt": "Make a 6-page book-notes deck distilling the book's core ideas, key quotes, takeaways, and an action list. Warm, literary style.",
+    "imageFilter_title": "Explainer",
+    "imageFilter_prompt": "Make a 6-page explainer deck that breaks down one concept in plain language, layer by layer, with analogies and diagrams. Clear and easy to follow.",
+    "particleAvatar_title": "Pitch Deck",
+    "particleAvatar_prompt": "Make a 10-page pitch deck covering the problem, solution, market size, business model, team, and plan. Institutional feel, strong on numbers.",
+    "glassDashboard_title": "Retrospective",
+    "glassDashboard_prompt": "Make a 6-page project-retrospective deck covering goals recap, key metrics, what went well, what to improve, and next steps. Clear reporting style.",
+    "glassCard_title": "Training Course",
+    "glassCard_prompt": "Make an 8-page training-course deck covering learning objectives, explanations, cases, key takeaways, and a self-check quiz. Clear teaching structure.",
+    "kanban_title": "Knowledge Map",
+    "kanban_prompt": "Make a 6-page knowledge-map deck laying out a field's core concepts, relationships, and structure with diagrams. Clear structure.",
+    "placeholder_blog": "Make a short-video industry data report...",
+    "placeholder_todo": "Make a product intro deck...",
+    "placeholder_ecommerce": "Make a book-notes deck...",
+    "placeholder_portfolio": "Make a pitch deck...",
+    "placeholder_chat": "Make a weekly team retrospective...",
+    "placeholder_weather": "Make an onboarding training deck..."
   },
   "HomePage": {
     "create": "Generate a beautiful deck from one sentence",
@@ -66,7 +66,7 @@
     "preview": "Preview"
   },
   "MessageForm": {
-    "placeholder": "Send a message to SDesign to create a project for......",
+    "placeholder": "Describe changes and let SDesign adjust this deck...",
     "send": "Send"
   },
   "MessageLoading": {
@@ -106,7 +106,7 @@
     "subscription": "Choose the subscription that fits you"
   },
   "ProjectForm": {
-    "placeholder": "Send a message to SDesign, {displayText}",
+    "placeholder": "Describe the deck you want, {displayText}",
     "send": "Send"
   },
   "ProjectHeader": {

@@ -1,9 +1,0 @@
-{
-  "prisma.pinToPrisma6": true,
-  "i18n-ally.localesPaths": [
-    "messages",
-    "src/i18n",
-    "src/modules/messages"
-  ],
-  "i18n-ally.sourceLanguage": "zh-CN"
-}

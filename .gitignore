@@ -46,3 +46,11 @@ next-env.d.ts
 .antigravity/
 .agents/
 skills-lock.json
+
+# IDE / 编辑器本地配置（不该进仓库）
+.vscode/
+.idea/
+.cursor/
+
+# 设计工作文件（app 用不到；实际 logo 在 public/sdesign-s.png）
+design/
