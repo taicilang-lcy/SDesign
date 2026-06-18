@@ -154,9 +154,9 @@ src/
 
 ---
 
-## 📄 开源协议
+## 📄 License
 
-MIT，fork 自 [Evoke](https://github.com/cheeseburgertony/evoke)（同为 MIT），保留原作者 cheeseburgertony 版权。
+MIT, forked from [Evoke](https://github.com/cheeseburgertony/evoke). See [LICENSE](LICENSE).
 
 ---
 

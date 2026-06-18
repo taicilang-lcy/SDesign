@@ -156,7 +156,7 @@ src/
 
 ## 📄 License
 
-MIT. Forked from [Evoke](https://github.com/cheeseburgertony/evoke) (also MIT); original copyright retained for cheeseburgertony.
+MIT, forked from [Evoke](https://github.com/cheeseburgertony/evoke). See [LICENSE](LICENSE).
 
 ---
 
