@@ -3,13 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HistoryIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useScroll } from "@/hooks/use-scroll";
 import { useHistoryUi } from "@/modules/home/ui/history-ui-context";
+import { LanguageSwitcher } from "@/modules/home/ui/components/language-switcher";
 import { cn } from "@/lib/utils";
 
 export const NavBar = () => {
   const isScrolled = useScroll();
   const { count, setOpen } = useHistoryUi();
+  const t = useTranslations("Navbar");
 
   return (
     <nav
@@ -30,17 +33,17 @@ export const NavBar = () => {
             href="#gallery"
             className="text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
           >
-            模板
+            {t("templates")}
           </Link>
           {count > 0 && (
             <button
               type="button"
               onClick={() => setOpen(true)}
-              title="历史记录"
+              title={t("history", { count })}
               className="inline-flex items-center gap-1.5 text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
             >
               <HistoryIcon className="size-4" />
-              历史（{count}）
+              {t("history", { count })}
             </button>
           )}
           <a
@@ -49,8 +52,9 @@ export const NavBar = () => {
             rel="noreferrer"
             className="text-sm text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
           >
-            GitHub
+            {t("github")}
           </a>
+          <LanguageSwitcher />
         </div>
       </div>
     </nav>

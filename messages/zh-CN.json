@@ -99,7 +99,10 @@
   "Navbar": {
     "signIn": "登录",
     "signUp": "注册",
-    "zhCN": "简体中文"
+    "zhCN": "简体中文",
+    "templates": "模板",
+    "history": "历史（{count}）",
+    "github": "GitHub"
   },
   "PricingPage": {
     "pricingTitle": "订阅价格",
@@ -151,5 +154,47 @@
     "unknownTime": "未知时间",
     "upgrade": "升级",
     "userNotLoggedIn": "用户未登录"
+  },
+  "Generator": {
+    "untitled": "未命名 PPT",
+    "justNow": "刚刚",
+    "minutesAgo": "{n} 分钟前",
+    "hoursAgo": "{n} 小时前",
+    "daysAgo": "{n} 天前",
+    "storageFull": "浏览器本地空间不足，历史未能保存",
+    "parseFailed": "文档解析失败",
+    "docRead": "已读取「{name}」{suffix}",
+    "docTruncated": "（内容较长，已截取前部分）",
+    "uploadFailed": "上传失败，请重试",
+    "requestFailed": "请求失败 ({status})",
+    "streamInterrupted": "生成中断：{detail}",
+    "noDeck": "没解析出有效的幻灯片，换个模型或重试。",
+    "genFailed": "生成失败",
+    "popupBlocked": "弹窗被拦截，请允许本站弹窗后重试",
+    "printOpened": "已打开打印窗口，在弹出的对话框里选「另存为 PDF」即可",
+    "historyTitle": "历史记录",
+    "historyEmpty": "暂无历史",
+    "historyEmptyHint": "生成的 PPT 会自动保存在这里",
+    "delete": "删除",
+    "clearHistory": "清空历史",
+    "remake": "再做一份",
+    "refresh": "刷新",
+    "openNewTab": "新标签打开",
+    "exportHtml": "导出 HTML",
+    "exportPdf": "导出 PDF",
+    "generating": "生成中 · 已接收 {chars} 字（慢模型可能要几分钟）",
+    "placeholder": "描述你要做的 PPT 主题，或上传文档 / 选个模板风格…",
+    "stylePrefix": "风格：{name}",
+    "removeTemplate": "取消模板",
+    "removeAttachment": "移除附件",
+    "uploadTitle": "上传文档（PDF / Word / txt / md），作为生成参考",
+    "attachment": "参考附件",
+    "optional": "（可选）"
+  },
+  "TemplateGallery": {
+    "title": "挑一个模板，填上主题",
+    "subtitle": "选好版式 → 回到上面补主题或传文档 → 一键生成，成品自动套用该模板的设计",
+    "useThis": "用这个",
+    "more": "更多精选模板持续接入中"
   }
 }

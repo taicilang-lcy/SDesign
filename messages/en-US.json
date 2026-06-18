@@ -99,7 +99,10 @@
   "Navbar": {
     "signIn": "Sign In",
     "signUp": "Sign Up",
-    "zhCN": "简体中文"
+    "zhCN": "简体中文",
+    "templates": "Templates",
+    "history": "History ({count})",
+    "github": "GitHub"
   },
   "PricingPage": {
     "pricingTitle": "Pricing",
@@ -151,5 +154,47 @@
     "unknownTime": "Unknown time",
     "upgrade": "Upgrade",
     "userNotLoggedIn": "User not logged in"
+  },
+  "Generator": {
+    "untitled": "Untitled deck",
+    "justNow": "just now",
+    "minutesAgo": "{n} min ago",
+    "hoursAgo": "{n} h ago",
+    "daysAgo": "{n} d ago",
+    "storageFull": "Local storage is full — history wasn’t saved",
+    "parseFailed": "Failed to parse the document",
+    "docRead": "Loaded “{name}”{suffix}",
+    "docTruncated": " (long document — only the first part was kept)",
+    "uploadFailed": "Upload failed, please try again",
+    "requestFailed": "Request failed ({status})",
+    "streamInterrupted": "Generation interrupted: {detail}",
+    "noDeck": "Couldn’t parse a valid deck — try another model or retry.",
+    "genFailed": "Generation failed",
+    "popupBlocked": "Popup blocked — allow popups for this site and retry",
+    "printOpened": "Print window opened — choose “Save as PDF” in the dialog",
+    "historyTitle": "History",
+    "historyEmpty": "No history yet",
+    "historyEmptyHint": "Your generated decks are saved here",
+    "delete": "Delete",
+    "clearHistory": "Clear history",
+    "remake": "New deck",
+    "refresh": "Refresh",
+    "openNewTab": "Open in new tab",
+    "exportHtml": "Export HTML",
+    "exportPdf": "Export PDF",
+    "generating": "Generating · {chars} chars received (slow models may take minutes)",
+    "placeholder": "Describe the deck you want, or upload a document / pick a template style…",
+    "stylePrefix": "Style: {name}",
+    "removeTemplate": "Remove template",
+    "removeAttachment": "Remove attachment",
+    "uploadTitle": "Upload a document (PDF / Word / txt / md) as reference",
+    "attachment": "Attach file",
+    "optional": "(optional)"
+  },
+  "TemplateGallery": {
+    "title": "Pick a template, add your topic",
+    "subtitle": "Choose a layout → scroll up to add a topic or upload a document → generate, and the result adopts this template’s design",
+    "useThis": "Use this",
+    "more": "More curated templates coming soon"
   }
 }

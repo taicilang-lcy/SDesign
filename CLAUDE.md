@@ -61,9 +61,20 @@ npm run lint     # ESLint
 
 All optional — supply at least one model's key, **or** have a subscription CLI installed. See `.env.example`. No database or auth env needed.
 
+## Internationalization (zh-CN / en-US)
+
+The UI is bilingual via **next-intl**, locale chosen by cookie (no routed `/en` prefix).
+
+- Locales in `src/i18n/config.ts` (`zh-CN` default, `en-US`); cookie `SDESIGN_LOCALE` read/written in `src/i18n/locale.ts` (`getUserLocale` / `setUserLocale` server action).
+- Messages: `messages/zh-CN.json` + `messages/en-US.json` — **add every new UI string to BOTH**.
+- `app/layout.tsx` passes `locale` + `messages` into `<NextIntlClientProvider>` (required, else client-component `useTranslations` silently returns keys).
+- The `LanguageSwitcher` (navbar, top-right) calls `setUserLocale` then the route re-renders in the new locale.
+- Template category/name labels live in `src/data/templates.ts` as `name`/`tip` (zh, also used server-side for generation) + `nameEn`/`tipEn` (en); the gallery picks by `useLocale()`.
+
 ## Conventions
 
 - Shadcn/UI components are pre-installed under `src/components/ui/*`; import directly.
 - Import `cn` from `@/lib/utils`.
 - All styling is Tailwind; no separate CSS files.
 - Keep it dependency-light and no-DB — that is the point of this fork.
+- New UI strings go through `useTranslations` with keys in both message files (see Internationalization).
