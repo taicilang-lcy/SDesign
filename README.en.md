@@ -157,6 +157,7 @@ src/
 ## 📄 License
 
 MIT, forked from [Evoke](https://github.com/cheeseburgertony/evoke). See [LICENSE](LICENSE).
+Built-in templates are adapted from MIT-licensed projects — see [TEMPLATE-CREDITS.md](TEMPLATE-CREDITS.md).
 
 ---
 
