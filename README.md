@@ -165,5 +165,5 @@ MIT，fork 自 [Evoke](https://github.com/cheeseburgertony/evoke)（同为 MIT�
 </p>
 
 <p align="center">
-  Made with ❤️ · Simon Lin &nbsp;·&nbsp; 抖音 <b>Simon林</b> &nbsp;·&nbsp; 公众号 <b>硅基世纪</b>
+  Made with ❤️ · Simon Lin &nbsp;·&nbsp; 抖音 <b>Simon林</b> &nbsp;·&nbsp; 商务合作 🌏 <b>simonlin1212</b>（请备注来意）
 </p>

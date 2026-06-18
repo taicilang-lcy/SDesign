@@ -165,5 +165,5 @@ MIT. Forked from [Evoke](https://github.com/cheeseburgertony/evoke) (also MIT); 
 </p>
 
 <p align="center">
-  Made with ❤️ · Simon Lin &nbsp;·&nbsp; Douyin <b>Simon林</b> &nbsp;·&nbsp; WeChat <b>硅基世纪</b>
+  Made with ❤️ · Simon Lin &nbsp;·&nbsp; Douyin <b>Simon林</b> &nbsp;·&nbsp; Business 🌏 <b>simonlin1212</b> (please note your purpose)
 </p>
