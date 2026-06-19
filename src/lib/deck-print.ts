@@ -112,6 +112,11 @@ const FORCE_SHOW_AND_PRINT = `<script>
 
 export function buildPrintableDeck(html: string): string {
   let doc = html;
+  // 把 deck 自带的 @media (max|min-width:...) 响应式断点限定到 screen：幻灯片是固定全屏
+  // 视口，这些断点本是给窄屏/手机的，但打印时"宽度=纸张宽度"(A4/Letter≈800px<断点)，会
+  // 误触发——把多列网格压成单列、缩小 padding/字号，导致 PDF 与 HTML 不一致。加 screen
+  // 限定后只在屏幕生效，打印走桌面版样式；屏幕显示零变化。
+  doc = doc.replace(/@media\s*\(\s*(max|min)-width/g, "@media screen and ($1-width");
   doc = /<\/head>/i.test(doc)
     ? doc.replace(/<\/head>/i, DECK_PRINT_STYLE + "</head>")
     : DECK_PRINT_STYLE + doc;
