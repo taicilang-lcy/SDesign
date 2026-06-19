@@ -256,14 +256,17 @@ export const Generator = () => {
   // 导出 PDF：新标签打开"打印就绪"版本，自动调起浏览器打印 → 另存为 PDF（矢量、中文完美）
   const exportPdf = () => {
     if (!html) return;
-    const win = window.open("", "_blank");
+    // 用 Blob URL 打开（null origin，与 app 跨源隔离），避免 document.write 把模型生成的
+    // deck 写进同源窗口——若 deck 被注入恶意脚本会读到 app DOM。打印脚本在 blob 文档加载后自动 print。
+    const blob = new Blob([buildPrintableDeck(html)], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    const win = window.open(url, "_blank");
     if (!win) {
+      URL.revokeObjectURL(url);
       toast.error(t("popupBlocked"));
       return;
     }
-    win.document.open();
-    win.document.write(buildPrintableDeck(html));
-    win.document.close();
+    setTimeout(() => URL.revokeObjectURL(url), 60_000);
     toast.info(t("printOpened"));
   };
 

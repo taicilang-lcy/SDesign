@@ -71,6 +71,11 @@ const FORCE_SHOW_AND_PRINT = `<script>
       el.classList.add("active", "current", "is-active", "visible", "show");
       el.style.opacity = "1";
       el.style.visibility = "visible";
+      // 不少轮播用 .slide:not(.active){display:none} 隐藏非当前页——只对 display:none
+      // 的 slide 解隐藏（不无脑设 block，以免破坏内部用 flex 排版的 slide）。
+      if (window.getComputedStyle(el).display === "none") {
+        el.style.setProperty("display", "block", "important");
+      }
     }
   }
   // 重置幻灯片容器的裁切/位移：模型生成的轮播 wrapper（横向 flex + transform +
