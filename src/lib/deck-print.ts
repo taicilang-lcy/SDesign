@@ -17,6 +17,23 @@ const DECK_PRINT_STYLE = `<style id="sdesign-print-style">
     padding: 0 !important;
   }
   body { display: block !important; scroll-snap-type: none !important; transform: none !important; }
+  /* 幻灯片容器（横向轮播 wrapper，class 名由模型生成、不可控）：用 :has() 命中 .slide
+     的直接父级，并兜底一批常见容器名。把 flex + transform + overflow:hidden 的轮播
+     重置成"纵向块、不裁切、不位移"——否则容器仍在裁，打印只能看到第一页。 */
+  *:has(> .slide), *:has(> section.slide),
+  .slides, .deck, .deck-slides, .slides-container, .deck-container,
+  .presentation, .ppt-container, .swiper, .carousel, .slide-wrap, .slide-track {
+    display: block !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    transform: none !important;
+    width: 1920px !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+  }
   .slide, section.slide, .deck-slide, .ppt-slide, [data-slide], [data-screen-label] {
     width: 1920px !important;
     height: 1080px !important;
@@ -56,8 +73,29 @@ const FORCE_SHOW_AND_PRINT = `<script>
       el.style.visibility = "visible";
     }
   }
+  // 重置幻灯片容器的裁切/位移：模型生成的轮播 wrapper（横向 flex + transform +
+  // overflow:hidden）会把当前页之外的 slide 全部裁掉，导致打印只有第一页。
+  // 沿每个 slide 向上遍历到 body，强制不裁切、不位移、纵向排布（兜底，CSS :has 没命中时也管用）。
+  function flattenContainers() {
+    var sel = ".slide, section.slide, .deck-slide, .ppt-slide, [data-slide], [data-screen-label]";
+    var slides = document.querySelectorAll(sel);
+    for (var i = 0; i < slides.length; i++) {
+      var el = slides[i].parentElement;
+      while (el && el !== document.body) {
+        el.style.setProperty("transform", "none", "important");
+        el.style.setProperty("overflow", "visible", "important");
+        el.style.setProperty("width", "1920px", "important");
+        el.style.setProperty("height", "auto", "important");
+        el.style.setProperty("min-height", "0", "important");
+        el.style.setProperty("display", "block", "important");
+        el.style.setProperty("scroll-snap-type", "none", "important");
+        el = el.parentElement;
+      }
+    }
+  }
   function go() {
     showAll();
+    flattenContainers();
     setTimeout(function () {
       try { window.focus(); window.print(); } catch (e) {}
     }, 800);
