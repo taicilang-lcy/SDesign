@@ -32,27 +32,43 @@ const CLI_DEFS: Record<string, CliDef> = {
     bin: "claude",
     fallbackBins: ["openclaude"],
     delivery: "system-file",
-    buildArgs: (sysFile) => [
-      "-p",
-      "--output-format",
-      "text",
-      "--system-prompt-file",
-      sysFile as string,
-      // 禁掉所有工具：它只该把文字变成 HTML，不该读文件/搜代码/执行/联网/起子任务。
-      // 漏禁 Read/Glob/Grep 会让 Claude Code 试图读本地文件来"理解意图"，产生意外行为。
-      "--disallowedTools",
-      "Read",
-      "Write",
-      "Edit",
-      "Glob",
-      "Grep",
-      "Bash",
-      "NotebookEdit",
-      "WebFetch",
-      "WebSearch",
-      "TodoWrite",
-      "Task",
-    ],
+    buildArgs: (sysFile) => {
+      // 跳过所有 MCP server：headless -p 启动时会逐个初始化用户全局 MCP（~/.claude.json
+      // 的 mcpServers），任一慢/卡（典型如经 npm exec 拉起的 server）就会把整次生成阻塞
+      // 在调模型之前——前端表现为一直 0 字、无任何输出。此处已 --disallowedTools 禁了所有
+      // 工具，MCP 对出片毫无帮助。传一份空配置 + --strict-mcp-config，让它彻底不加载。
+      const mcpFile = path.join(path.dirname(sysFile as string), "mcp.json");
+      fs.writeFileSync(mcpFile, '{"mcpServers":{}}', "utf8");
+      return [
+        "-p",
+        "--output-format",
+        "text",
+        "--system-prompt-file",
+        sysFile as string,
+        "--mcp-config",
+        mcpFile,
+        "--strict-mcp-config",
+        // 关掉推理：--output-format text 模式下模型的 reasoning 不会写进 stdout，因此对
+        // 推理模型（GLM、DeepSeek-R1 等）开思考只会徒增耗时、甚至一路涨到 CLI 超时（前端
+        // 全程 0 字）。出幻灯片用不到深度推理，默认关掉。合法值：enabled/adaptive/disabled。
+        "--thinking",
+        "disabled",
+        // 禁掉所有工具：它只该把文字变成 HTML，不该读文件/搜代码/执行/联网/起子任务。
+        // 漏禁 Read/Glob/Grep 会让 Claude Code 试图读本地文件来"理解意图"，产生意外行为。
+        "--disallowedTools",
+        "Read",
+        "Write",
+        "Edit",
+        "Glob",
+        "Grep",
+        "Bash",
+        "NotebookEdit",
+        "WebFetch",
+        "WebSearch",
+        "TodoWrite",
+        "Task",
+      ];
+    },
   },
   // Qwen Code（Gemini CLI 的 fork）：--yolo 非交互，提示词走 stdin，纯文本输出。
   qwen: {
