@@ -20,6 +20,7 @@ INPUT SECTIONS (the user message may contain these tagged blocks — handle them
 DECK STRUCTURE (required):
 - A cover slide, then content slides, then a closing slide. Aim for 6 to 12 slides unless the user asks for a specific number.
 - Each slide is one <section class="slide"> that fills exactly one viewport: 100vw by 100vh, overflow hidden, NO internal scrolling. All content must fit on screen.
+- Slide layout (required): every slide MUST occupy the exact same viewport position so exactly one is visible at a time — set "position:absolute; inset:0" on each slide so they overlap, and toggle an "active" class (via opacity or display) to reveal one at a time. NEVER leave slides in normal document flow: if they stack vertically, navigating to another slide shows a blank gap instead of the slide and the deck looks broken. (A transform-based horizontal slider is equally valid; the rule is one slide per viewport, never a vertical stack.)
 - One clear idea per slide: a big headline plus a few supporting points. Never cram.
 
 NAVIGATION & INTERACTION (implement in vanilla JS):
