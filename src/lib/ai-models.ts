@@ -13,6 +13,7 @@ export type ProviderId =
   | "together"
   | "mimo"
   | "longcat"
+  | "tencent"
   | "cli-claude"
   | "cli-qwen"
   | "cli-gemini"
@@ -87,6 +88,12 @@ export const aiModels: ModelConfig[] = [
     comingSoon: true,
   },
   // —— API 版（填自己的 key）——
+  {
+    id: "glm-5",
+    name: "腾讯云 Coding Plan · GLM-5",
+    description: "智谱 GLM-5 · Coding Plan 套餐（sk-sp- 专属 key）",
+    provider: "tencent",
+  },
   {
     id: "deepseek-chat",
     name: "DeepSeek V3",

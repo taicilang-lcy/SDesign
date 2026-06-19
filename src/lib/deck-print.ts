@@ -17,6 +17,23 @@ const DECK_PRINT_STYLE = `<style id="sdesign-print-style">
     padding: 0 !important;
   }
   body { display: block !important; scroll-snap-type: none !important; transform: none !important; }
+  /* 幻灯片容器（横向轮播 wrapper，class 名由模型生成、不可控）：用 :has() 命中 .slide
+     的直接父级，并兜底一批常见容器名。把 flex + transform + overflow:hidden 的轮播
+     重置成"纵向块、不裁切、不位移"——否则容器仍在裁，打印只能看到第一页。 */
+  *:has(> .slide), *:has(> section.slide),
+  .slides, .deck, .deck-slides, .slides-container, .deck-container,
+  .presentation, .ppt-container, .swiper, .carousel, .slide-wrap, .slide-track {
+    display: block !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    transform: none !important;
+    width: 1920px !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+  }
   .slide, section.slide, .deck-slide, .ppt-slide, [data-slide], [data-screen-label] {
     width: 1920px !important;
     height: 1080px !important;
@@ -54,10 +71,36 @@ const FORCE_SHOW_AND_PRINT = `<script>
       el.classList.add("active", "current", "is-active", "visible", "show");
       el.style.opacity = "1";
       el.style.visibility = "visible";
+      // 不少轮播用 .slide:not(.active){display:none} 隐藏非当前页——只对 display:none
+      // 的 slide 解隐藏（不无脑设 block，以免破坏内部用 flex 排版的 slide）。
+      if (window.getComputedStyle(el).display === "none") {
+        el.style.setProperty("display", "block", "important");
+      }
+    }
+  }
+  // 重置幻灯片容器的裁切/位移：模型生成的轮播 wrapper（横向 flex + transform +
+  // overflow:hidden）会把当前页之外的 slide 全部裁掉，导致打印只有第一页。
+  // 沿每个 slide 向上遍历到 body，强制不裁切、不位移、纵向排布（兜底，CSS :has 没命中时也管用）。
+  function flattenContainers() {
+    var sel = ".slide, section.slide, .deck-slide, .ppt-slide, [data-slide], [data-screen-label]";
+    var slides = document.querySelectorAll(sel);
+    for (var i = 0; i < slides.length; i++) {
+      var el = slides[i].parentElement;
+      while (el && el !== document.body) {
+        el.style.setProperty("transform", "none", "important");
+        el.style.setProperty("overflow", "visible", "important");
+        el.style.setProperty("width", "1920px", "important");
+        el.style.setProperty("height", "auto", "important");
+        el.style.setProperty("min-height", "0", "important");
+        el.style.setProperty("display", "block", "important");
+        el.style.setProperty("scroll-snap-type", "none", "important");
+        el = el.parentElement;
+      }
     }
   }
   function go() {
     showAll();
+    flattenContainers();
     setTimeout(function () {
       try { window.focus(); window.print(); } catch (e) {}
     }, 800);
@@ -69,6 +112,11 @@ const FORCE_SHOW_AND_PRINT = `<script>
 
 export function buildPrintableDeck(html: string): string {
   let doc = html;
+  // 把 deck 自带的 @media (max|min-width:...) 响应式断点限定到 screen：幻灯片是固定全屏
+  // 视口，这些断点本是给窄屏/手机的，但打印时"宽度=纸张宽度"(A4/Letter≈800px<断点)，会
+  // 误触发——把多列网格压成单列、缩小 padding/字号，导致 PDF 与 HTML 不一致。加 screen
+  // 限定后只在屏幕生效，打印走桌面版样式；屏幕显示零变化。
+  doc = doc.replace(/@media\s*\(\s*(max|min)-width/g, "@media screen and ($1-width");
   doc = /<\/head>/i.test(doc)
     ? doc.replace(/<\/head>/i, DECK_PRINT_STYLE + "</head>")
     : DECK_PRINT_STYLE + doc;

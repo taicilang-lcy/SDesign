@@ -83,6 +83,21 @@ export async function POST(req: NextRequest) {
   }
 
   // 流式调上游
+  // GLM-5 等推理模型默认疯狂思考（reasoning runaway）：一次 PPT 能产出几 MB 思考、慢到超时还狂耗额度。
+  // 订阅模式（cli-runtime.ts）靠 --thinking disabled 压住；API 模式这里给 tencent 端点传同样的 disabled。
+  // 实测腾讯云 Coding Plan /coding/v3 认 thinking:{type:"disabled"}（enable_thinking:false 无效）。
+  const reqBody: Record<string, unknown> = {
+    model: resolved.model,
+    stream: true,
+    temperature: 0.3,
+    messages: [
+      { role: "system", content: PROMPT },
+      { role: "user", content: genInput },
+    ],
+  };
+  if (model.provider === "tencent") {
+    reqBody.thinking = { type: "disabled" };
+  }
   let upstream: Response;
   try {
     upstream = await fetch(`${resolved.baseURL}/chat/completions`, {
@@ -91,15 +106,7 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${resolved.apiKey}`,
       },
-      body: JSON.stringify({
-        model: resolved.model,
-        stream: true,
-        temperature: 0.3,
-        messages: [
-          { role: "system", content: PROMPT },
-          { role: "user", content: genInput },
-        ],
-      }),
+      body: JSON.stringify(reqBody),
       // 客户端断开 / 超时都中止上游——避免请求挂死、上游继续算 token 计费
       signal: AbortSignal.any([req.signal, AbortSignal.timeout(STREAM_TIMEOUT_MS)]),
     });

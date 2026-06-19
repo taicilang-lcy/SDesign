@@ -26,6 +26,7 @@ const DEFAULT_BASE: Partial<Record<ProviderId, string | undefined>> = {
   together: "https://api.together.xyz/v1",
   mimo: undefined, // 私有网关，必须自配 MIMO_BASE_URL
   longcat: undefined,
+  tencent: "https://api.lkeap.cloud.tencent.com/coding/v3", // 腾讯云 Coding Plan（OpenAI 兼容）
 };
 
 const ENV_BASE: Partial<Record<ProviderId, string | undefined>> = {
@@ -38,6 +39,7 @@ const ENV_BASE: Partial<Record<ProviderId, string | undefined>> = {
   together: process.env.TOGETHER_BASE_URL,
   mimo: process.env.MIMO_BASE_URL,
   longcat: process.env.LONG_CAT_BASE_URL,
+  tencent: process.env.TENCENT_BASE_URL,
 };
 
 const ENV_KEY: Partial<Record<ProviderId, string | undefined>> = {
@@ -50,6 +52,7 @@ const ENV_KEY: Partial<Record<ProviderId, string | undefined>> = {
   together: process.env.TOGETHER_API_KEY,
   mimo: process.env.MIMO_API_KEY,
   longcat: process.env.LONG_CAT_API_KEY,
+  tencent: process.env.TENCENT_API_KEY,
 };
 
 export function resolveModel(modelId: string): ResolvedModel | ResolveError {
